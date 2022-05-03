@@ -55,7 +55,7 @@ namespace YahooFantasyWrapper.Client
             return await await ResilientCall(async () =>
             {
                 var xml = await Utils.GetResponseData(endPoint, AccessToken);
-                XmlSerializer serializer = new XmlSerializer(typeof(T));
+                XmlSerializer serializer = new XmlSerializer(typeof(T),YahooXml.XMLNS.ToString());
                 List<XElement> xElements = xml.Descendants(YahooXml.XMLNS + lookup).ToList();
                 List<T> collection = new List<T>();
                 foreach (var element in xElements)

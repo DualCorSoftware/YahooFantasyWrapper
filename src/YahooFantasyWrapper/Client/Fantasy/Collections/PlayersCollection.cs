@@ -48,9 +48,9 @@ namespace YahooFantasyWrapper.Client
         /// <param name="subresources">SubResources to include with Player Resource</param>
         /// <param name="AccessToken">Token for request</param>
         /// <returns>Players Collection (List of Player Resources)</returns>
-        public async Task<List<Team>> GetTeamPlayers(string AccessToken, string[] teamKeys = null, EndpointSubResourcesCollection subresources = null)
+        public async Task<List<Player>> GetTeamPlayers(string AccessToken, string[] teamKeys = null, EndpointSubResourcesCollection subresources = null)
         {
-           return await Utils.GetCollection<Team>(ApiEndpoints.PlayersTeamEndPoint(teamKeys, subresources), AccessToken, "team");
+           return await Utils.GetCollection<Player>(ApiEndpoints.PlayersTeamEndPoint(teamKeys, subresources), AccessToken, "player");
         }
     }
 }
