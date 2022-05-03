@@ -80,7 +80,7 @@ namespace YahooFantasyWrapper.Client
             return await await ResilientCall(async () =>
             {
                 var xml = await Utils.GetResponseData(endPoint, AccessToken);
-                XmlSerializer serializer = new XmlSerializer(typeof(T));
+                XmlSerializer serializer = new XmlSerializer(typeof(T), YahooXml.XMLNS.ToString());
                 XElement xElement = xml.Descendants(YahooXml.XMLNS + lookup).FirstOrDefault();
                 if (xElement == null && IsError(xml))                
                     throw new InvalidOperationException(GetErrorMessage(xml));
